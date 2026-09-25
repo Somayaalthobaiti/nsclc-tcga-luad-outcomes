@@ -1,0 +1,36 @@
+Study Protocol Overview
+
+Research Question: Among newly diagnosed patients with primary lung adenocarcinoma in the TCGA-LUAD cohort, what baseline demographic, smoking behavioral, pathological staging, and surgical margin factors are independently associated with Overall Survival (OS)?
+Rationale: Real-world genomic and clinical registries require rigorous baseline risk adjustment to avoid residual confounding when evaluating prognostic markers or observational treatment outcomes.
+Study Design: Retrospective observational cohort study.
+Target Population: Patients registered in the NCI TCGA-LUAD primary cohort (N=585).   
+
+Inclusion Criteria:
+Primary histologically confirmed diagnosis of lung adenocarcinoma.
+Complete baseline record in clinical_patient_luad.   
+
+Valid non-negative follow-up or survival time (Follow-up Days≥0).
+
+Exclusion Criteria:
+
+History of prior or synchronous primary malignancy (prior_malignancy == "yes").
+Missing vital status or zero total follow-up duration without documented death.
+Pathological stage unmapped or unrecorded at diagnosis.
+
+Exposures & Key Predictors:
+
+Primary Exposure: AJCC Pathologic Stage (Stage I, II, III, IV).
+Key Covariates: Age at diagnosis (continuous and stratified <65 vs. ≥65), Sex, Smoking History (Ever vs. Never Smoker), Surgical Margin Status (R0 vs. R1 /R2 /RX ).
+
+Primary Outcome:
+Overall Survival (OS): Calculated as duration in days from initial diagnosis to death from any cause (event) or last documented live follow-up (censored).
+Missing Data Strategy:
+Complete-case analysis for multivariable Cox models where covariate missingness <5%.
+Categorical missingness indicators or grouped unknown categories for variables with >5% missingness (e.g., residual tumor margins, pack years).   
+
+Statistical Analysis Strategy:
+Descriptive characterization (frequencies/percentages for categorical factors; median/IQR or mean/SD for continuous variables).
+Kaplan-Meier overall survival estimates with log-rank testing across clinical strata.
+Univariable and Multivariable Cox Proportional Hazards modeling reporting Hazard Ratios (HR), 95% Confidence Intervals (95% CI), and Wald p-values.
+Model diagnostics using scaled Schoenfeld residuals to test proportional hazards assumptions.
+Methodological Limitations: Observational structure without randomized control, unstandardized longitudinal treatment dosage details, potential selection bias inherent to surgical tissue acquisition in TCGA.
